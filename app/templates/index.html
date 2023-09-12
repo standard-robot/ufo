@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>YEW EF OH</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+  </head>
+  <body onload="populateList();">
+    <h2>All UFO Sightings</h2>
+    <div id="separate">
+    <input type="text" id="location-input" placeholder="Location" />
+    <button id="next-button" onclick="getLocation()">Find Location</button>
+    <input type="text" id="date-input" placeholder="Occurrence date" />
+    <button id="next-button" onclick="getDate()">Find Date</button>
+    <button id="next-button" onclick="clear()">Clear</button>
+    </div>
+    <div>
+    <table>
+      <thead>
+        <tr>
+          <th id="head-row">Occurrence Date</th>
+          <th id="head-row">Posted Date</th>
+          <th id="head-row">City</th>
+          <th id="head-row">State</th>
+          <th id="head-row">Country</th>
+          <th id="head-row">Shape</th>
+          <th id="head-row">Summary</th>
+        </tr>
+      </thead>
+      <tbody id="ufos-list">
+      </tbody>
+    </table>
+    </div id="separate"> 
+    <script src="static/script.js"></script>
+  </body>
+</html>

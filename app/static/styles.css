@@ -1,0 +1,18 @@
+#head-row {
+    border-style:dashed;
+    padding-right:25%;
+    border-color:black;
+    border-width:2px;
+    width:10%;
+}
+
+#next-button {
+    width: 60px;
+    height: 50px;
+    overflow:auto;
+}
+
+#separate {
+    padding-top:10%;
+    padding-bottom:10%;
+}
