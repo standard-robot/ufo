@@ -8,8 +8,11 @@ This project requires Python3 and uses the following dependencies:
 - requests
 - os
 
+# How to run
+`python3 run.py` will start the app.
+
 # Structural Overview
-- `db` contains a blank `__init__` 
+- `db` contains a blank `__init__` to include it as an import.
 - `app` contains the other application files including a config file, an init file which includes the routing, and a scraper file. This directory also contains`template` and `static` directories for the basic HTML, JS, and CSS for the app. A frontend was not required, but creating a basic interface for the API was simple. With that said, I did not see a need to go overboard with the display creativity. 
 
 # Primary Design Decisions
@@ -25,9 +28,6 @@ The two candidates for a scraper were either Scrapy or BS4. Although the former 
 
 ## requests
 This library in conjunction with BS4 allows for a more capable scraper. 
-
-
-
 
 # Conclusion
 This project was interesting. I haven't written many web-based Python projects in a while and I haven't had experience with Flask or SQLite until this, so it was fun reacquainting myself with these technologies.

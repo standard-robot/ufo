@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import sqlite3
+import os
 import datetime
 
 conn = sqlite3.connect('db/search_sightings.db')
@@ -44,14 +45,15 @@ def scrapeit():
             if date_response.status_code == 200:
                 date_soup = BeautifulSoup(date_response.text, "html.parser")
                 tables = date_soup.find("table")
-                subentries = tables.find_all("tr")[1:len(tables)-1]  # Skip the header row and the last row
+                # Skip the header row and the last row
+                subentries = tables.find_all("tr")[1:len(tables)-1]
                 for subentry in subentries:
                     subentry_info = extract_subentry_info(subentry, second_arg)
                     # Check if the data already exists in the database
                     clean = subentry_info['date_occurred'].split(" ")[0]
                     entry_date = datetime.datetime.strptime(clean, "%m/%d/%Y")
                     current_date = datetime.datetime.now()
-                    if entry_date <= current_date:
+                    if entry_date <= current_date or not os.path.exists(conn):
                         cursor.execute('''
                             SELECT * FROM ufo_sightings 
                             WHERE date_occurred = ? 
