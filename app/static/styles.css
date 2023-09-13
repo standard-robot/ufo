@@ -45,6 +45,7 @@ table {
 body {
     background-color:  #616080;
 }
+
 /*This UFO animation code is modified from https://codepen.io/PappaMalvin/pen/yLOKajY*/
 .ufo_body {
     position: absolute;
@@ -93,5 +94,5 @@ body {
       left: 10%;
       top: 20%;
     }
-  }
+}
   

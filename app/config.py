@@ -1,4 +1,1 @@
-# Basic config which implements a DATABASE_URI
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-DATABASE_URI = f"sqlite:///{os.path.join(basedir, 'db/search_sightings.db')}"
+# Blank config file for convention's sake. Didn't see a need to create much in here for this project.

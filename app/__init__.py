@@ -1,6 +1,5 @@
-from flask import Flask, render_template
-import sqlite3
-import flask
+# App init file to scrape the data, create the db, and create the routes.
+from flask import Flask
 from . import database, scrape, routes
 app = Flask(__name__)
 app.config.from_object('app.config')
