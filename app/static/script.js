@@ -1,4 +1,6 @@
 // Populates the table upon loading
+// Add event listener for input2 focus
+
 function populateList() {
   const ufosList = document.getElementById('ufos-list');
   fetch('/api/ufos')
@@ -6,7 +8,7 @@ function populateList() {
     .then((data) => {
       const formattedData = data.map((ufo) => {
         return `
-          <tr>
+          <tr class="tg">
             <td>${ufo.date_occurred}</td>
             <td>${ufo.date_posted}</td>
             <td>${ufo.city}</td>
@@ -34,7 +36,7 @@ function getLocation() {
       // Handle the fetched data (e.g., display it on the page)
       const formattedData = data.map((ufo) => {
         return `
-          <tr>
+          <tr id="data-tr">
             <td>${ufo.date_occurred}</td>
             <td>${ufo.date_posted}</td>
             <td>${ufo.city}</td>
@@ -79,23 +81,9 @@ function getDate() {
     .catch((error) => console.error('Error fetching data:', error));
 }
 
-var input1 = document.getElementById("location-input");
-var input2 = document.getElementById("date-input");
-input1.addEventListener("focus", function() {
-  if(input1.value != '') {
-    input2.disabled = true; 
-
-  }
-});
-
-// Add event listener for input2 focus
-input2.addEventListener("focus", function() {
-  if(input2.value != '') {
-    input1.disabled = true;
-  }
-});
-
 function clear() {
+  populateList()
+  console.log("test")
   document.getElementById('location-input').value = '';
   document.getElementById('date-input').nodeValue = '';
 }

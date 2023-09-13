@@ -27,8 +27,9 @@ def extract_subentry_info(subentry, second_arg):
 
 
 def scrapeit():
+    print('Scraping UFO data from link')
     # Step 1: Make an HTTP request to the URL
-    url = "https://nuforc.org/ndx/?id=post"
+    url = "https://nuforc.org/ndx/?id=event"
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -43,14 +44,14 @@ def scrapeit():
             if date_response.status_code == 200:
                 date_soup = BeautifulSoup(date_response.text, "html.parser")
                 tables = date_soup.find("table")
-                subentries = tables.find_all("tr")[1:]  # Skip the header row
+                subentries = tables.find_all("tr")[1:len(tables)-1]  # Skip the header row and the last row
                 for subentry in subentries:
                     subentry_info = extract_subentry_info(subentry, second_arg)
                     # Check if the data already exists in the database
-                    entry_date = datetime.datetime.strptime(
-                        subentry_info["date_posted"], '%Y-%m-%d').date()
-                    current_date = datetime.datetime.now().date()
-                    if entry_date >= current_date:
+                    clean = subentry_info['date_occurred'].split(" ")[0]
+                    entry_date = datetime.datetime.strptime(clean, "%m/%d/%Y")
+                    current_date = datetime.datetime.now()
+                    if entry_date <= current_date:
                         cursor.execute('''
                             SELECT * FROM ufo_sightings 
                             WHERE date_occurred = ? 

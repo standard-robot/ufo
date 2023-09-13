@@ -5,14 +5,21 @@
     <link rel="stylesheet" type="text/css" href="static/styles.css">
   </head>
   <body onload="populateList();">
-    <h2>All UFO Sightings</h2>
-    <div id="separate">
-    <input type="text" id="location-input" placeholder="Location" />
-    <button id="next-button" onclick="getLocation()">Find Location</button>
-    <input type="text" id="date-input" placeholder="Occurrence date" />
-    <button id="next-button" onclick="getDate()">Find Date</button>
-    <button id="next-button" onclick="clear()">Clear</button>
+    <h2 id="header">Recent UFO Sightings</h2>
+    <!-- This UFO animation code is modified from https://codepen.io/PappaMalvin/pen/yLOKajY -->
+    <div id="box-left">
+        <div class="ufo_body"></div>
+        <div class="ufo_top"></div>
     </div>
+
+    <div id="separate">
+      <input type="text" onfocus="this.value=''" id="location-input" placeholder="Location" />
+      <button id="next-button" onclick="getLocation()">Find Place</button>
+      <input type="text" onfocus="this.value=''" id="date-input" placeholder="Occurrence date" />
+      <button id="next-button" onclick="getDate()">Find Date</button>
+      <button id="next-button" onclick="populateList()">Refresh</button>
+    </div>
+    
     <div>
     <table>
       <thead>

@@ -1,18 +1,97 @@
 #head-row {
-    border-style:dashed;
+    border-style:solid;
     padding-right:25%;
     border-color:black;
     border-width:2px;
+    width:100px;
+}
+
+table {
+    width:100%;
+}
+
+#box-left {
+    position:absolute;
     width:10%;
+    height:10%;
+    animation: fly_ufo 15s infinite;
 }
 
 #next-button {
-    width: 60px;
-    height: 50px;
+    width: 5%;
+    height: 100px;
+    padding:2px;
     overflow:auto;
 }
 
-#separate {
-    padding-top:10%;
-    padding-bottom:10%;
+#header {
+    text-align:center;
 }
+
+#separate {
+    position:relative;
+    text-align:center;
+    padding-top:100px;
+    padding-bottom:100px;
+}
+
+#data-tr {
+    padding-top:25px;
+    border-style:solid;
+    border-color:gray;
+    border-width:2px;
+}
+
+body {
+    background-color:  #616080;
+}
+/*This UFO animation code is modified from https://codepen.io/PappaMalvin/pen/yLOKajY*/
+.ufo_body {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    top: 25px;
+    left: 0px;
+    border-radius: 300%;
+    background-color: rgb(22, 8, 8);
+    z-index: 5;
+    display: inline-block;
+}
+  
+.ufo_top {
+    position: absolute;
+    width: 60px;
+    height: 45px;
+    left: 70px;
+    top: 5px;
+    border-radius: 50%;
+    background-color: rgb(22, 8, 8);
+}
+
+@keyframes fly_ufo {
+    0% {
+      left: 10%;
+      top: 20%;
+    }
+    1% {
+      -webkit-transform: scale(0.3);
+    }
+    5% {
+      left: 15%;
+      top: 10%;
+    }
+    10% {
+      left: 15%;
+      top: 20%;
+    }
+  
+    50% {
+      left: 15%;
+      top: 20%;
+    }
+    100% {
+      left: 10%;
+      top: 20%;
+    }
+  }
+  
