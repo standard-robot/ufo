@@ -1,7 +1,7 @@
 import sqlite3
-
 DATABASE_URI = "db/search_sightings.db"
 
+# Create a SQLite database if it doesn't exist already.
 def create_tables():
     conn = sqlite3.connect(DATABASE_URI)
     cursor = conn.cursor()

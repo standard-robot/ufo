@@ -1,6 +1,4 @@
-// Populates the table upon loading
-// Add event listener for input2 focus
-
+// Populates the table on the frontend
 function populateList() {
   const ufosList = document.getElementById('ufos-list');
   fetch('/api/ufos')
@@ -25,7 +23,7 @@ function populateList() {
     .catch((error) => console.error('Error fetching data:', error));
 }
 
-// Function to fetch UFO sightings data by location
+// Function to fetch UFO sightings data by a given location (this endpoint checks whether the city, state, or country include the entry).
 function getLocation() {
   const ufosList = document.getElementById('ufos-list');
 
@@ -53,15 +51,13 @@ function getLocation() {
     .catch((error) => console.error('Error fetching data:', error));
 }
 
-// Function to fetch UFO sightings data by location
+// Function to fetch UFO sightings data by a given date
 function getDate() {
   const ufosList = document.getElementById('ufos-list');
-
   var user_input = document.getElementById('date-input').value;
   fetch(`/api/ufos/dates/${user_input}`)
     .then((response) => response.json())
     .then((data) => {
-      // Handle the fetched data (e.g., display it on the page)
       const formattedData = data.map((ufo) => {
         return `
           <tr>
@@ -81,6 +77,7 @@ function getDate() {
     .catch((error) => console.error('Error fetching data:', error));
 }
 
+// Clears the focused input
 function clear() {
   populateList()
   console.log("test")

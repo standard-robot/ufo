@@ -7,8 +7,8 @@ import datetime
 conn = sqlite3.connect('db/search_sightings.db')
 cursor = conn.cursor()
 
-
-def extract_subentry_info(subentry, second_arg):
+# Abstraction to obtain and manipulate the subentry data in a more "JSON"-able fashion.
+def extract_data(subentry, second_arg):
     cols = subentry.find_all('td')
     date_occurred = cols[1].text
     city = cols[2].text if cols[2].text else None
@@ -29,7 +29,6 @@ def extract_subentry_info(subentry, second_arg):
 
 def scrapeit():
     print('Scraping UFO data from link')
-    # Step 1: Make an HTTP request to the URL
     url = "https://nuforc.org/ndx/?id=event"
     response = requests.get(url)
 
@@ -48,7 +47,7 @@ def scrapeit():
                 # Skip the header row and the last row
                 subentries = tables.find_all("tr")[1:len(tables)-1]
                 for subentry in subentries:
-                    subentry_info = extract_subentry_info(subentry, second_arg)
+                    subentry_info = extract_data(subentry, second_arg)
                     # Check if the data already exists in the database
                     clean = subentry_info['date_occurred'].split(" ")[0]
                     entry_date = datetime.datetime.strptime(clean, "%m/%d/%Y")
